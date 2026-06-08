@@ -1,0 +1,18 @@
+USE wigzo_tape_db;
+
+INSERT INTO users (id,email,password,name,is_admin,created_at) VALUES
+('11111111-1111-4111-8111-111111111111','admin@wigzotape.com','$2y$10$I8T.Z.QMie3xfB6Xg2GD2eAiWWJDnmee9zaoRJcBVqLdH.zJhm0Dm','Admin',1,'2026-01-01T00:00:00+00:00')
+ON DUPLICATE KEY UPDATE email=email;
+
+INSERT INTO products (id,name,description,price,image_url,category,stock,features,created_at) VALUES
+('22222222-2222-4222-8222-222222222201','Ultra Hold Wig Tape - 36 Pieces','Professional-grade double-sided tape for secure wig application. Waterproof and sweat-resistant formula provides up to 4-6 weeks of hold. Perfect for daily wear and active lifestyles.',599.00,'https://images.unsplash.com/photo-1522839206838-1cfecf32cc72?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85','wig-tape',100,'["Medical-grade adhesive","4-6 weeks hold","Waterproof & sweat-resistant","36 pre-cut pieces"]','2026-01-01T00:00:00+00:00'),
+('22222222-2222-4222-8222-222222222202','Sensitive Skin Wig Tape - 24 Pieces','Hypoallergenic tape specially formulated for sensitive skin. Gentle yet secure hold for 2-3 weeks. Dermatologist tested and recommended for first-time wig users.',499.00,'https://images.unsplash.com/photo-1612538498488-226257115cc4?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85','wig-tape',100,'["Hypoallergenic formula","2-3 weeks hold","Dermatologist tested","24 pre-cut pieces"]','2026-01-01T00:00:00+00:00'),
+('22222222-2222-4222-8222-222222222203','Professional Tape Roll - 3 Yards','Continuous roll of professional-grade wig tape for custom cutting. Ideal for salons and professional stylists. Premium adhesive with maximum flexibility.',899.00,'https://images.unsplash.com/photo-1522839206838-1cfecf32cc72?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85','wig-tape',50,'["3 yards continuous roll","Professional grade","Custom cutting","Salon quality"]','2026-01-01T00:00:00+00:00'),
+('22222222-2222-4222-8222-222222222204','Extra Strong Hold Tape - 48 Pieces','Maximum strength adhesive for extended wear. Perfect for athletes and high-activity individuals. Provides secure hold for up to 6-8 weeks in all conditions.',799.00,'https://images.unsplash.com/photo-1612538498488-226257115cc4?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85','wig-tape',80,'["Maximum strength","6-8 weeks hold","Ideal for sports","48 pre-cut pieces"]','2026-01-01T00:00:00+00:00'),
+('22222222-2222-4222-8222-222222222205','Mini Tape Strips - 72 Pieces','Small precision strips for frontal lace and detailed work. Perfect for natural hairline application. Easy to apply and remove.',449.00,'https://images.unsplash.com/photo-1522839206838-1cfecf32cc72?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85','wig-tape',120,'["Mini precision strips","Perfect for lace frontals","Natural hairline","72 pieces"]','2026-01-01T00:00:00+00:00'),
+('22222222-2222-4222-8222-222222222206','Starter Kit - 12 Pieces + Remover','Perfect starter kit for beginners. Includes 12 tape pieces and gentle adhesive remover. Complete instructions included for easy application.',399.00,'https://images.unsplash.com/photo-1612538498488-226257115cc4?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85','wig-tape',150,'["Beginner friendly","Includes remover","Instructions included","12 tape pieces"]','2026-01-01T00:00:00+00:00')
+ON DUPLICATE KEY UPDATE name=VALUES(name);
+
+INSERT INTO coupons (id,code,discount_type,discount_value,min_purchase,max_discount,usage_limit,used_count,valid_from,valid_until,is_active,created_at) VALUES
+('33333333-3333-4333-8333-333333333333','FIRSTTIME','percentage',20.00,0.00,NULL,NULL,0,'2026-01-01T00:00:00+00:00','2030-01-01T00:00:00+00:00',1,'2026-01-01T00:00:00+00:00')
+ON DUPLICATE KEY UPDATE code=code;
