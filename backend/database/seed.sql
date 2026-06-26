@@ -1,4 +1,4 @@
-USE wigzo_tape_db;
+
 
 INSERT INTO users (id,email,password,name,is_admin,created_at) VALUES
 ('11111111-1111-4111-8111-111111111111','admin@wigzotape.com','$2y$10$I8T.Z.QMie3xfB6Xg2GD2eAiWWJDnmee9zaoRJcBVqLdH.zJhm0Dm','Admin',1,'2026-01-01T00:00:00+00:00')

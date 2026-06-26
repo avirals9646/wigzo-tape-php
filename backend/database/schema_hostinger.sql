@@ -1,0 +1,83 @@
+
+
+CREATE TABLE IF NOT EXISTS users (
+  id VARCHAR(36) PRIMARY KEY,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  name VARCHAR(190) NOT NULL,
+  is_admin TINYINT(1) NOT NULL DEFAULT 0,
+  created_at VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS products (
+  id VARCHAR(36) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  image_url LONGTEXT NOT NULL,
+  category VARCHAR(100) NOT NULL DEFAULT 'wig-tape',
+  stock INT NOT NULL DEFAULT 100,
+  features JSON NULL,
+  created_at VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS carts (
+  id VARCHAR(36) PRIMARY KEY,
+  user_id VARCHAR(36) NOT NULL UNIQUE,
+  items JSON NOT NULL,
+  updated_at VARCHAR(40) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS orders (
+  id VARCHAR(36) PRIMARY KEY,
+  user_id VARCHAR(36) NOT NULL,
+  items JSON NOT NULL,
+  subtotal DECIMAL(10,2) NULL,
+  discount DECIMAL(10,2) NOT NULL DEFAULT 0,
+  coupon_code VARCHAR(100) NULL,
+  total_amount DECIMAL(10,2) NOT NULL,
+  status VARCHAR(40) NOT NULL DEFAULT 'pending',
+  payment_id VARCHAR(190) NULL,
+  shipping_address JSON NOT NULL,
+  created_at VARCHAR(40) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS coupons (
+  id VARCHAR(36) PRIMARY KEY,
+  code VARCHAR(100) NOT NULL UNIQUE,
+  discount_type VARCHAR(30) NOT NULL,
+  discount_value DECIMAL(10,2) NOT NULL,
+  min_purchase DECIMAL(10,2) NOT NULL DEFAULT 0,
+  max_discount DECIMAL(10,2) NULL,
+  usage_limit INT NULL,
+  used_count INT NOT NULL DEFAULT 0,
+  valid_from VARCHAR(40) NOT NULL,
+  valid_until VARCHAR(40) NOT NULL,
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+  created_at VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS blogs (
+  id VARCHAR(36) PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  content LONGTEXT NOT NULL,
+  author_id VARCHAR(36) NOT NULL,
+  author_name VARCHAR(190) NOT NULL,
+  created_at VARCHAR(40) NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS contact_forms (
+  id VARCHAR(36) PRIMARY KEY,
+  name VARCHAR(190) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  phone VARCHAR(60) NOT NULL,
+  address TEXT NOT NULL,
+  feedback TEXT NOT NULL,
+  status VARCHAR(40) NOT NULL DEFAULT 'pending',
+  admin_reply TEXT NULL,
+  created_at VARCHAR(40) NOT NULL,
+  replied_at VARCHAR(40) NULL
+);
