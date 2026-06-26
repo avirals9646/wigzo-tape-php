@@ -34,7 +34,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href={social.href}
-                  target="_blank" 
+                  target="_blank"
                   className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#17847c] hover:border-[#17847c] hover:-translate-y-2 transition-all duration-500 group"
                 >
                   <social.Icon className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:scale-110 transition-all" />
@@ -61,7 +61,7 @@ export default function Footer() {
             </ul>
           </div>
 
-        
+
 
           {/* Newsletter / Contact */}
           <div className="md:col-span-4 space-y-8">
@@ -77,7 +77,7 @@ export default function Footer() {
               </button>
             </div>
             <div className="flex items-center gap-3 text-gray-400 text-sm">
-              <Mail className="w-4 h-4 text-[#17847c]" />      
+              <Mail className="w-4 h-4 text-[#17847c]" />
               <span>wigzotapes@gmail.com</span>
             </div>
             <div className="flex items-center gap-3 text-gray-400 text-sm">
@@ -92,7 +92,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-[#17847c] transition-colors underline underline-offset-2"
               >
-                 H-38, Street No 4, Brahmpuri, Delhi - 110053
+                H-38, Street No 4, Brahmpuri, Delhi - 110053
               </a>
             </div>
           </div>
@@ -113,41 +113,117 @@ export default function Footer() {
 
               {/* Developer 1 */}
               <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-2xl backdrop-blur-md group hover:border-[#17847c]/50 transition-all duration-500">
+
                 <div className="w-8 h-8 rounded-xl bg-[#17847c]/10 flex items-center justify-center text-[#17847c] group-hover:bg-primary group-hover:text-white transition-all">
                   <Code2 className="w-4 h-4" />
                 </div>
+
                 <div className="flex flex-col text-left">
-                  <span className="text-[9px] font-black tracking-widest text-gray-500 uppercase leading-none mb-1">Developed BY</span>
-                  <span className="text-xs font-bold text-gray-200">Sarthak Kesarwani</span>
+                  <span className="text-[9px] font-black tracking-widest text-gray-500 uppercase leading-none mb-1">
+                    Developed By
+                  </span>
+
+                  <span className="text-xs font-bold text-gray-200">
+                    Sarthak Kesarwani
+                  </span>
+
+
+
+                  {/* Phone */}
+                  <span className="text-[10px] text-gray-400">
+                    +91 8858887616
+                  </span>
                 </div>
+
                 <div className="flex gap-2 ml-2 border-l border-white/10 pl-2">
-                  {/* Mailto link: Isse direct Inbox khulega */}
-                  <a href="sarthakkesarwani2001@gmil.com" title="Send Email" className="text-gray-500 hover:text-[#17847c] transition-colors">
+
+                  {/* Email */}
+                  <a
+                    href="mailto:sarthakkesarwani2001@gmail.com"
+                    title="Send Email"
+                    className="text-gray-500 hover:text-[#17847c] transition-colors"
+                  >
                     <Mail className="w-3.5 h-3.5" />
                   </a>
-                  {/* LinkedIn direct link */}
-                  <a href="https://www.linkedin.com/in/sarthak8858/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="text-gray-500 hover:text-[#17847c] transition-colors">
+
+                  {/* Phone */}
+                  <a
+                    href="tel:+91 8858887616"
+                    title="Call"
+                    className="text-gray-500 hover:text-[#17847c] transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/in/sarthak8858/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="LinkedIn Profile"
+                    className="text-gray-500 hover:text-[#17847c] transition-colors"
+                  >
                     <Linkedin className="w-3.5 h-3.5" />
                   </a>
+
                 </div>
               </div>
 
               {/* Developer 2 */}
               <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-2xl backdrop-blur-md group hover:border-[#17847c]/50 transition-all duration-500">
+
                 <div className="w-8 h-8 rounded-xl bg-[#17847c]/10 flex items-center justify-center text-[#17847c] group-hover:bg-primary group-hover:text-white transition-all">
                   <Code2 className="w-4 h-4" />
                 </div>
+
                 <div className="flex flex-col text-left">
-                  <span className="text-[9px] font-black tracking-widest text-gray-500 uppercase leading-none mb-1">Developed BY</span>
-                  <span className="text-xs font-bold text-gray-200">Aviral Srivastava</span>
+                  <span className="text-[9px] font-black tracking-widest text-gray-500 uppercase leading-none mb-1">
+                    Developed By
+                  </span>
+
+                  <span className="text-xs font-bold text-gray-200">
+                    Aviral Srivastava
+                  </span>
+
+
+
+                  {/* Phone */}
+                  <span className="text-[10px] text-gray-400">
+                    +91 8840827563
+                  </span>
                 </div>
+
                 <div className="flex gap-2 ml-2 border-l border-white/10 pl-2">
-                  <a href="mailto:p2@email.com" title="Send Email" className="text-gray-500 hover:text-[#17847c] transition-colors">
+
+                  {/* Email */}
+                  <a
+                    href="mailto:aviralunited@gmail.com"
+                    title="Send Email"
+                    className="text-gray-500 hover:text-[#17847c] transition-colors"
+                  >
                     <Mail className="w-3.5 h-3.5" />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="text-gray-500 hover:text-[#17847c] transition-colors">
+
+                  {/* Phone */}
+                  <a
+                    href="tel:+91 8840827563"
+                    title="Call"
+                    className="text-gray-500 hover:text-[#17847c] transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/in/aviral9646/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="LinkedIn Profile"
+                    className="text-gray-500 hover:text-[#17847c] transition-colors"
+                  >
                     <Linkedin className="w-3.5 h-3.5" />
                   </a>
+
                 </div>
               </div>
 
@@ -161,10 +237,10 @@ export default function Footer() {
                   <span className="text-xs font-bold text-gray-200">Pranav Mishra</span>
                 </div>
                 <div className="flex gap-2 ml-2 border-l border-white/10 pl-2">
-                  <a href="mailto:p2@email.com" title="Send Email" className="text-gray-500 hover:text-[#17847c] transition-colors">
+                  <a href="pranavuu60@gmail.com" title="Send Email" className="text-gray-500 hover:text-[#17847c] transition-colors">
                     <Mail className="w-3.5 h-3.5" />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="text-gray-500 hover:text-[#17847c] transition-colors">
+                  <a href="https://www.linkedin.com/in/pranavmishra60/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="text-gray-500 hover:text-[#17847c] transition-colors">
                     <Linkedin className="w-3.5 h-3.5" />
                   </a>
                 </div>
