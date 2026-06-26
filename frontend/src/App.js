@@ -20,6 +20,8 @@ import Blogs from './pages/Blogs';
 import CreateBlog from './pages/CreateBlog';
 import BlogDetail from './pages/BlogDetail';
 import Contact from './pages/Contact';
+import LegalPolicies from './pages/LegalPolicies';
+
 import '@/App.css';
 
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -59,6 +61,7 @@ function AppRoutes() {
         <Route path="/blogs/:id" element={<BlogDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/legal" element={<LegalPolicies />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/cart"

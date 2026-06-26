@@ -14,7 +14,6 @@ This converted project uses:
 - React for frontend
 - MySQL for database
 
-
 ## Important Local Running Note
 
 This project can run in two database modes:
@@ -793,4 +792,3 @@ admin123
 ```
 
 That is it. The project should now run locally.
-

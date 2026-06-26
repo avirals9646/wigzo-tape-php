@@ -24,6 +24,7 @@ export default function Header() {
     { name: 'Blog', path: '/blogs' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Policies', path: '/legal' },
   ];
 
   return (
