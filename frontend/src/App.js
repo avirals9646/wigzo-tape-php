@@ -48,7 +48,11 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
 
 function AppRoutes() {
   return (
+
+    
+    
     <div className="App">
+      <h1>hooooooo</h1>
       <Banner />
       <NewUserPopup />
       <Header />
