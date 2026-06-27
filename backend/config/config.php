@@ -9,6 +9,6 @@ return [
     'sqlite_path' => getenv('SQLITE_PATH') ?: __DIR__ . '/../database/wigzo_tape.sqlite',
     'jwt_secret' => getenv('JWT_SECRET') ?: 'change-this-secret-key',
     'cors_origins' => getenv('CORS_ORIGINS') ?: '*',
-    'razorpay_key_id' => getenv('RAZORPAY_KEY_ID') ?: 'rzp_test_SnL4lcttenJnZV',
-    'razorpay_key_secret' => getenv('RAZORPAY_KEY_SECRET') ?: 'HETOGQl1hwnqSwc9ooeJMIMh',
+    'razorpay_key_id' => getenv('RAZORPAY_KEY_ID') ?: 'rzp_live_T6ZjK5S4tEjCW0',
+    'razorpay_key_secret' => getenv('RAZORPAY_KEY_SECRET') ?: '7eATbx6FBkrpn5lGGADtO9lb',
 ];

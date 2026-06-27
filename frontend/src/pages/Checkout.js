@@ -192,35 +192,47 @@ const handleSubmit = async (e) => {
   setProcessing(true);
 
   try {
-    // 1. DB mein order banao
+    // 1. DB mein local order banao
     const items = products.map(p => ({
-      product_id: p.id, name: p.name, price: p.price,
-      quantity: getQty(p.id), image_url: p.image_url
+      product_id: p.id,
+      name: p.name,
+      price: p.price,
+      quantity: getQty(p.id),
+      image_url: p.image_url
     }));
 
     const orderRes = await api.post('/orders/create', {
       items,
-      total_amount: calcTotal(),   // subtotal bhejo, backend khud discount lagata hai
+      total_amount: calcTotal(),
       shipping_address: formData,
       coupon_code: appliedCoupon?.coupon_details?.code || null
     });
+
     const orderId = orderRes.data.id;
 
     // 2. Razorpay order banao
     const rzpOrderRes = await api.post('/payments/create-order', {
-      amount: finalTotal()
+      amount: finalTotal(),
+      order_id: orderId
     });
+
     const rzpOrder = rzpOrderRes.data;
 
-    // 3. Razorpay modal kholo
+    // 3. Razorpay modal open karo
     await new Promise((resolve, reject) => {
+      if (!window.Razorpay) {
+        reject(new Error('Razorpay SDK not loaded'));
+        return;
+      }
+
       const options = {
-        key: 'rzp_test_SnL4lcttenJnZV',
+        key: rzpOrder.key_id,
         amount: rzpOrder.amount,
-        currency: 'INR',
-        name: 'Wigzo Tape',
+        currency: rzpOrder.currency || 'INR',
+        name: 'Wigzo Tapes',
         description: 'Order Payment',
         order_id: rzpOrder.id,
+
         handler: async function (response) {
           try {
             // 4. Signature verify karo
@@ -229,22 +241,39 @@ const handleSubmit = async (e) => {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
             });
-            // 5. Order ko paid mark karo
+
+            // 5. Payment verify hone ke baad hi order paid mark karo
             await api.post(`/orders/${orderId}/payment`, {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
             });
+
             resolve();
-          } catch (err) { reject(err); }
+          } catch (err) {
+            reject(err);
+          }
         },
+
         prefill: {
           name: formData.fullName,
           email: formData.email,
           contact: formData.phone,
         },
-        theme: { color: '#17847c' },
-        modal: { ondismiss: () => reject(new Error('cancelled')) }
+
+        notes: {
+          local_order_id: orderId,
+        },
+
+        theme: {
+          color: '#17847c',
+        },
+
+        modal: {
+          ondismiss: () => reject(new Error('cancelled')),
+        },
       };
+
       const rzp = new window.Razorpay(options);
       rzp.open();
     });
@@ -254,10 +283,14 @@ const handleSubmit = async (e) => {
     navigate('/dashboard');
 
   } catch (err) {
+    console.error('Payment error:', err);
+
     if (err?.message === 'cancelled') {
       toast.info('Payment cancelled.');
+    } else if (err?.message === 'Razorpay SDK not loaded') {
+      toast.error('Payment system not loaded. Please refresh and try again.');
     } else {
-      toast.error('Payment failed. Please try again.');
+      toast.error(err?.response?.data?.detail || 'Payment failed. Please try again.');
     }
   } finally {
     setProcessing(false);
